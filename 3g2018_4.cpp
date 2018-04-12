@@ -3,7 +3,7 @@
 int main()
 {
     char str[255];
-    gets(str);
+    gets_s(str);
     int length = strlen(str);//length为字符串总长度
     int max = 0;             //max为最大不重复子串的长度
     int i, j, k, l;
