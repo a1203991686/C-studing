@@ -19,7 +19,7 @@ int main()
 	printf("please input a2\n");
 	//scanf_s("%s", a2); /*从键盘键入a1,a2*/
 	gets(a2);
-	int b1, b2, b3;
+	int b1, b2;
 	b1 =  SIZEchar(a1);
 	b2 =  SIZEchar(a2);/*计算a1、a2数的长度*/
 	int c1[M], c2[M], c3[M];
@@ -59,7 +59,7 @@ int main()
 			c1[i - 1] -= 1;
 		}
 	}
-	int m = 0, x = 0;/*x为c3的计数器*/
+	int x = 0;/*x为c3的计数器*/
 	for (i = 0; i < b1; i++,x++)
 	{
 		if (c3[i] != 0)
