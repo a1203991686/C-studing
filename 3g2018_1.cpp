@@ -4,7 +4,7 @@ int main()
     int K;/*K为整数*/
     int m, n;/*m，n为范围*/
     int i;
-    int a[3];/*a[3]为子数*/
+    int a[0];/*a[3]为子数*/
     printf("请输入K的值：\n");
     scanf("%d", &K);
     printf("请输入m的值：\n");
