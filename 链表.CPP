@@ -10,7 +10,7 @@ struct student
 	char num[9];   //学号
 	char name[9];  //姓名
 	char class1[5];//班级
-	int wy;        //语文成绩
+	int yw;        //语文成绩
 	int sx;        //数学成绩
 	int yy;        //英语成绩
 	struct student *next;
@@ -21,7 +21,7 @@ struct student *create()
 	char num[9];      //学号
 	char name[9]; //姓名
 	char class1[5];       //班级
-	int wy;       //语文成绩
+	int yw;       //语文成绩
 	int sx;       //数学成绩
 	int yy;       //英语成绩
 	head = NULL;
@@ -37,7 +37,7 @@ struct student *create()
 		printf("请输入第%d位同学班级：", i);
 		scanf("%s", class1);
 		printf("请输入第%d位同学语文成绩：", i);
-		scanf("%d", &wy);
+		scanf("%d", &yw);
 		printf("请输入第%d位同学数学成绩：", i);
 		scanf("%d", &sx);
 		printf("请输入第%d位同学英语成绩：", i);
@@ -46,7 +46,7 @@ struct student *create()
 		strcpy(p->num, num);
 		strcpy(p->name, name);
 		strcpy(p->class1, class1);
-		p->wy = wy;
+		p->yw = yw;
 		p->sx = sx;
 		p->yy = yy;
 		p->next = NULL;
@@ -63,7 +63,7 @@ struct student *insert(struct student *head)
 	char num[9];      //学号
 	char name[9]; //姓名
 	char class1[5];       //班级
-	int wy;       //语文成绩
+	int yw;       //语文成绩
 	int sx;       //数学成绩
 	int yy;       //英语成绩
 	int i;
@@ -74,7 +74,7 @@ struct student *insert(struct student *head)
 	printf("请输入第%d位同学班级：", i);
 	scanf("%s", class1);
 	printf("请输入第%d位同学语文成绩：", i);
-	scanf("%d", &wy);
+	scanf("%d", &yw);
 	printf("请输入第%d位同学数学成绩：", i);
 	scanf("%d", &sx);
 	printf("请输入第%d位同学英语成绩：", i);
@@ -83,9 +83,10 @@ struct student *insert(struct student *head)
 	strcpy(p->num, num);
 	strcpy(p->name, name);
 	strcpy(p->class1, class1);
-	p->wy = wy;
+	p->yw = yw;
 	p->sx = sx;
 	p->yy = yy;
+	q->next = NULL;//找到之前的尾指针
 	q->next = p;
 	p->next = NULL;
 }
@@ -96,12 +97,73 @@ struct student *find(struct student *head, char num[])
 		p = p->next;
 	return p;
 }
-int xiugai(struct student *head, char num)
+int xiugai(struct student *head, char num[])
 {
+	struct student *p = (find(head, num));
+	if(p)
+    {
+        printf("********修改学生信息********\n");
+        int a;
+        printf("┌──────────────────────────────────────────────┐\n");
+        printf("├1.修改学号      2.修改姓名      3.修改班级    ┤\n");
+        printf("├4.修改语文成绩  5.修改数学成绩  6.修改英语成绩┤\n");
+        printf("└──────────────────────────────────────────────┘\n");
+        printf("请输入您需要修改的内容:(1~6)");
+        scanf("%d", &a);
+        if(a==1)
+        {
+            int sum[9];
+            printf("请输入同学学号：", i);
+            scanf("%s", num);
+            strcpy(p->num,num);
+        }
+        if(a==2)
+        {
+            char name[9];
+            printf("请输入同学姓名：", i);
+            scanf("%s", name);
+            strcpy(p->name,name);
+        }
+        if(a==3)
+        {
+            char class1[5];
+            printf("请输入第%d位同学班级：", i);
+            scanf("%s", class1);
+            strcpy(p->class1,class1);
+        }
+        if(a==4)
+        {
+            int yw;
+            printf("请输入第%d位同学语文成绩：", i);
+            scanf("%d", &wy);
+            p->yw=yw;
+        }
+        if(a==5)
+        {
+            int sx;
+            printf("请输入第%d位同学数学成绩：", i);
+            scanf("%d", &sx);
+            p->sx=sx;
+        }
+        if(a==6)
+        {
+            int yy;
+            printf("请输入第%d位同学英语成绩：", i);
+            scanf("%d", &yy);
+            p->yy=yy;
+        }
+    }
 	printf(" ");
 	return 0;
 }
-
+void delete1(struct student *head, char num[])
+{
+    struct student *p = (find(head, num));
+    struct student *q;
+    q->next=p->next;
+    free(p);
+    printf("删除成功！！！\n");
+}
 
 
 
@@ -186,21 +248,21 @@ int guanliyuan(void)//管理员选单
 			insert(head);
 			break;
 
-		/*case 7:
-		tianjialaoshi();
-		break;
-		case 8:
-		xiugailaoshi();
-		break;
-		case 9:
-		tianjiaxuesheng();
-		break;
-		case 10:
-		xiugaixuesheng();
-		break;
-		case 11:
-		xiugaimima();
-		break;*/
+			/*case 7:
+			tianjialaoshi();
+			break;
+			case 8:
+			xiugailaoshi();
+			break;
+			case 9:
+			tianjiaxuesheng();
+			break;
+			case 10:
+			xiugaixuesheng();
+			break;
+			case 11:
+			xiugaimima();
+			break;*/
 		case 0:
 		{
 			printf("退出中请稍后···\n");
