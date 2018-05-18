@@ -2,59 +2,112 @@
 #include"stdlib.h"
 #include"windows.h"
 #include"string.h"
-void teacher(struct student *head);
-void administrator(struct student *head);
-void student_1(struct student *head);
-struct student *create();
-void change(struct student *head, char num[9]);
-void delete_1(struct student *head, char num[9]);
-void ywsort(struct student *head);
-void sxsort(struct student *head);
-void yysort(struct student *head);
-void scoresort(struct student *head);
-void numsort(struct student *head);
-void chaxun(struct student *head, char num[9]);
-void insert(struct student *head);
-void output(struct student *head);
+void teacher(struct student *head);//ÀÏÊ¦¶Ë´òÓ¡ÏîÄ¿
+void administrator(struct student *head);//¹ÜÀíÔ±¶Ë´òÓ¡ÏîÄ¿
+void student_1(struct student *head);//Ñ§Éú¶Ë´òÓ¡ÏîÄ¿
+void logininf(struct student *head);//µÇÂ¼ĞÅÏ¢ĞŞ¸Ä´òÓ¡ÏîÄ¿
+struct student *create();//´´½¨ĞÅÏ¢Á´±í
+struct student *inf_1();//´ÓÎÄ¼ş¶ÁÈëĞÅÏ¢µ½Á´±í
+struct student *find(struct student *head, char num[9]);//²éÕÒ
+void change_1(struct student *head, char num[9]);//ĞŞ¸Ä
+void delete_1(struct student *head, char num[9]);//É¾³ı
+void ywsort(struct student *head);//ÓïÎÄÅÅĞò
+void sxsort(struct student *head);//ÊıÑ§ÅÅĞò
+void yysort(struct student *head);//Ó¢ÓïÅÅĞò
+void sort_1(struct student *head);//ÅÅĞò½çÃæ´òÓ¡
+void numsort(struct student *head);//Ñ§ºÅÅÅĞò
+void chaxun(struct student *head, char num[9]);//²éÑ¯ĞÅÏ¢
+void insert(struct student *head);//Ôö¼ÓĞÅÏ¢
+void save_1(struct student *head);//±£´æµ½ÎÄ¼ş
+void output();//´òÓ¡ËùÓĞÏîÄ¿
+
+void save_2(struct login_a *head_a);//¹ÜÀíÔ±µÇÂ½ÎÄ¼ş±£´æ
+void change_l_a(struct login_a *head_a, char username[20]);//ĞŞ¸Ä¹ÜÀíÔ±ÃÜÂë
+void delete_1(struct login_a *head_a, char username[20]);//É¾³ıÕË»§
+void insert_l_a(struct login_a *head_a);//Ôö¼Ó¹ÜÀíÔ±µÇÂ¼Á´±í½Úµã
+struct login_a *inf_l_a();//¹ÜÀíÔ±ÃÜÂëÎÄ¼şĞÅÏ¢Â¼ÈëÁ´±í
+struct login_a *find_l(struct login_a *head_a, char username[20]);//²éÑ¯¹ÜÀíÔ±µÇÂ½ÕËºÅ
+struct login_a *create_a();//´´½¨¹ÜÀíÔ±µÇÂ½Á´±í
 
 struct student
 {
-	char num[9];   //å­¦å·
-	char name[9];  //å§“å
-	char class1[5];//ç­çº§
-	int yw;        //è¯­æ–‡æˆç»©
-	int sx;        //æ•°å­¦æˆç»©
-	int yy;        //è‹±è¯­æˆç»©
+	char num[9];   //Ñ§ºÅ
+	char name[9];  //ĞÕÃû
+	char class1[5];//°à¼¶
+	int yw;        //ÓïÎÄ³É¼¨
+	int sx;        //ÊıÑ§³É¼¨
+	int yy;        //Ó¢Óï³É¼¨
 	struct student *next;
+};
+
+struct login_a //¹ÜÀíÔ±ÕËºÅÃÜÂë
+{
+	char username[20];
+	char password[20];
+	char identity;
+	struct login_a *next;
 };
 
 struct student *create()
 {
 	struct student *head, *p, *q;
-	char num[9];      //å­¦å·
-	char name[9]; //å§“å
-	char class1[5];       //ç­çº§
-	int yw;       //è¯­æ–‡æˆç»©
-	int sx;       //æ•°å­¦æˆç»©
-	int yy;       //è‹±è¯­æˆç»©
+	char num[9];    //Ñ§ºÅ
+	char name[9];   //ĞÕÃû
+	char class1[5]; //°à¼¶
+	int yw;			//ÓïÎÄ³É¼¨
+	int sx;			//ÊıÑ§³É¼¨
+	int yy;			//Ó¢Óï³É¼¨
 	head = NULL;
 	int i, n;
-	printf("è¯·è¾“å…¥å­¦ç”Ÿäººæ•°ï¼š");
+	printf("ÇëÊäÈëÑ§ÉúÈËÊı£º");
 	scanf("%d", &n);
 	for (i = 0; i < n; i++)
 	{
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦å­¦å·ï¼š", i + 1);
+		getchar();
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§Ñ§ºÅ£º", i + 1);
 		scanf("%s", num);
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦å§“åï¼š", i + 1);
+		int a = strlen(num);
+		while (a != 8)
+		{
+			printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8ÎªÑ§ºÅ:");
+			scanf("%s", num);
+			a = strlen(num);
+		}
+		//getchar();
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§ĞÕÃû£º", i + 1);
 		scanf("%s", name);
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦ç­çº§ï¼š", i + 1);
+		//getchar();
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§°à¼¶£º", i + 1);
 		scanf("%s", class1);
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦è¯­æ–‡æˆç»©ï¼š", i + 1);
+		a = strlen(class1);
+		while (a != 4)
+		{
+			printf("°à¼¶ÊäÈë´íÎó£¬ÇëÊäÈëÕıÈ·µÄ°à¼¶:");
+			scanf("%s", class1);
+			a = strlen(class1);
+		}
+		//getchar();
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§ÓïÎÄ³É¼¨£º", i + 1);
 		scanf("%d", &yw);
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦æ•°å­¦æˆç»©ï¼š", i + 1);
+		while (yw > 100 || yw < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &yw);
+		}
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§ÊıÑ§³É¼¨£º", i + 1);
 		scanf("%d", &sx);
-		printf("è¯·è¾“å…¥ç¬¬%dä½åŒå­¦è‹±è¯­æˆç»©ï¼š", i + 1);
+		while (sx > 100 || sx < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &sx);
+		}
+		printf("ÇëÊäÈëµÚ%dÎ»Í¬Ñ§Ó¢Óï³É¼¨£º", i + 1);
 		scanf("%d", &yy);
+		while (yy > 100 || yy < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &yy);
+		}
 		p = (struct student *)malloc(sizeof(struct student));
 		strcpy(p->num, num);
 		strcpy(p->name, name);
@@ -72,112 +125,270 @@ struct student *create()
 	return head;
 }
 
-void output(struct student *head)
+void save_1(struct student *head)
 {
-	struct student *p;
-	printf("å­¦å· å§“å ç­çº§ è¯­æ–‡ æ•°å­¦ è‹±è¯­\n");
-	for (p = head; p; p = p->next)
-		printf("%s %s %s %d %d %d\n", p->num, p->name, p->class1, p->yw, p->sx, p->sx, p->yy);
+	struct student *stu, *p;
+	FILE *fp;
+	printf("ÇëÊäÈëÎÄ¼şÂ·¾¶¼°ÎÄ¼şÃû£º");
+	fp = fopen("d:/1.txt", "wt+");
+	/*
+	if (fp == NULL)
+	{
+	printf("¶Ô²»Æğ£¬ÎÄ¼ş´ò¿ª´íÎó£¬ÇëÖØĞÂÊäÈëÎÄ¼şÎ»ÖÃ\n");
+	Sleep(2000);
+	save_1(head);
+	}
+	stu = head->next;
+	*/
+	stu = p = head;
+	while (stu)
+	{
+		p = stu->next;
+		if (!p)
+		{
+			fprintf(fp, "%s\t%s\t%s\t%d\t%d\t%d", stu->num, stu->name, stu->class1, stu->yw, stu->sx, stu->yy);
+			break;
+		}
+		fprintf(fp, "%s\t%s\t%s\t%d\t%d\t%d\n", stu->num, stu->name, stu->class1, stu->yw, stu->sx, stu->yy);
+		stu = stu->next;
+	}
+	/*
+	for (stu = head->next; stu != NULL; stu = stu->next)
+	fprintf(fp, "%s\t%s\t%s\t%d\t%d\t%d\n", stu->num, stu->name, stu->class1, stu->yw, stu->sx, stu->yy);
+	*/
+	printf("ÎÄ¼şĞ´Èë³É¹¦,Çë°´ÈÎÒâ¼ü\n");
+	getchar();
+	fclose(fp);
+}
+
+struct student *inf_1()
+{
+	struct student *head, *r, *stu;
+	head = (struct student *)malloc(sizeof(struct student));
+	FILE *fp;
+	printf("***********ÎÄ¼ş¶ÁÈë*************\n");
+	fp = fopen("d:/1.txt", "rt");
+	/*
+	head = (struct student *)malloc(sizeof(struct student));
+	head->next = NULL;
+	*/
+	r = head;
+	while (!feof(fp))
+	{
+		stu = (struct student *)malloc(sizeof(struct student));
+		fscanf(fp, "%s %s %s %d %d %d", stu->num, stu->name, stu->class1, &stu->yw, &stu->sx, &stu->yy);
+		r->next = stu;
+		r = stu;
+	}
+	r->next = NULL;
+	fclose(fp);
+	printf("ÎÄ¼ş¶ÁÈ¡³É¹¦£¡£¡\n");
+	printf("ÕıÔÚÌø×ª£¬ÇëÉÔºó¡­¡­\n");
+	Sleep(1000);
+	system("cls");
+	head = head->next;
+	return head;
+}
+
+void output()
+{
+	struct student *p, *head, *stu;
+	head = inf_1();
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
+	p = stu = head;
+	while (p)
+	{
+		/*stu = p->next;
+		if(!stu)
+		break;*/
+		printf("%s\t%s\t%s\t%d\t%d\t%d\n", p->num, p->name, p->class1, p->yw, p->sx, p->yy);
+		p = p->next;
+	}
 	getchar();
 }
+
 void insert(struct student *head)
 {
 	struct student *p, *q;
-	char num[9];	 //å­¦å·
-	char name[9];	 //å§“å
-	char class1[5];  //ç­çº§
-	int yw;			 //è¯­æ–‡æˆç»©
-	int sx;			 //æ•°å­¦æˆç»©
-	int yy;			 //è‹±è¯­æˆç»©
-	printf("è¯·è¾“å…¥åŒå­¦å­¦å·ï¼š");
+	char num[9];	 //Ñ§ºÅ
+	char name[9];	 //ĞÕÃû
+	char class1[5];  //°à¼¶
+	int yw;			 //ÓïÎÄ³É¼¨
+	int sx;			 //ÊıÑ§³É¼¨
+	int yy;			 //Ó¢Óï³É¼¨
+	printf("ÇëÊäÈëÍ¬Ñ§Ñ§ºÅ£º");
 	scanf("%s", num);
-	printf("è¯·è¾“å…¥åŒå­¦å§“åï¼š");
+	int a = strlen(num);
+	while (a != 8)
+	{
+		printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+		scanf("%s", num);
+		a = strlen(num);
+	}
+	printf("ÇëÊäÈëÍ¬Ñ§ĞÕÃû£º");
 	scanf("%s", name);
-	printf("è¯·è¾“å…¥åŒå­¦ç­çº§ï¼š");
+	printf("ÇëÊäÈëÍ¬Ñ§°à¼¶£º");
 	scanf("%s", class1);
-	printf("è¯·è¾“å…¥åŒå­¦è¯­æ–‡æˆç»©ï¼š");
+	a = strlen(class1);
+	while (a != 4)
+	{
+		printf("°à¼¶ÊäÈë´íÎó£¬ÇëÊäÈëÕıÈ·µÄ°à¼¶:");
+		scanf("%s", class1);
+		a = strlen(class1);
+	}
+	printf("ÇëÊäÈëÍ¬Ñ§ÓïÎÄ³É¼¨£º");
 	scanf("%d", &yw);
-	printf("è¯·è¾“å…¥åŒå­¦æ•°å­¦æˆç»©ï¼š");
+	while (yw > 100 || yw < 0)
+	{
+		printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+		scanf("%d", &yw);
+	}
+	printf("ÇëÊäÈëÍ¬Ñ§ÊıÑ§³É¼¨£º");
 	scanf("%d", &sx);
-	printf("è¯·è¾“å…¥åŒå­¦è‹±è¯­æˆç»©ï¼š");
+	while (sx > 100 || sx < 0)
+	{
+		printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+		scanf("%d", &sx);
+	}
+	printf("ÇëÊäÈëÍ¬Ñ§Ó¢Óï³É¼¨£º");
 	scanf("%d", &yy);
+	while (yy > 100 || yy < 0)
+	{
+		printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+		scanf("%d", &yy);
+	}
 	p = (struct student *)malloc(sizeof(struct student));
 	q = (struct student *)malloc(sizeof(struct student));
-	q->next = NULL;
+	q = head->next;
 	strcpy(p->num, num);
 	strcpy(p->name, name);
 	strcpy(p->class1, class1);
 	p->yw = yw;
 	p->sx = sx;
 	p->yy = yy;
-	q->next = p;
-	p->next = NULL;
+	head->next = p;
+	p->next = q;
 }
 
 struct student *find(struct student *head, char num[9])
 {
-	struct student *p = head;
+	struct student *p, *q;
+	q = (struct student *)malloc(sizeof(struct student));
+	int i = 0;
+	for (p = head; p != NULL; p = p->next)
+		if (!strcmp(num, p->num))
+		{
+			i = 1;
+			break;
+		}
+	/*
 	while (p&&strcmp(num, p->num))
-		p = p->next;
+	p = p->next;
+	if (!strcmp(num, p->num))
+	i++;
+	*/
+	if (i == 0)
+	{
+		printf("²éÑ¯²»µ½½á¹û£¬ÇëÖØĞÂÊäÈë:");
+		char num_1[9];
+		getchar();
+		scanf("%s", num_1);
+		find(head, num_1);
+	}
 	return p;
 }
 
-void change(struct student *head, char num[9])
+void change_1(struct student *head, char num[9])
 {
 	struct student *p;
 	p = (struct student *)malloc(sizeof(struct student));
 	p = find(head, num);
-	int a;
-	printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”\n");
-	printf("â”œ        1.å­¦å·         â”¤\n");
-	printf("â”œ        2.å§“å         â”¤\n");
-	printf("â”œ        3.ç­çº§         â”¤\n");
-	printf("â”œ        4.è¯­æ–‡æˆç»©     â”¤\n");
-	printf("â”œ        5.æ•°å­¦æˆç»©     â”¤\n");
-	printf("â”œ        6.è‹±è¯­æˆç»©     â”¤\n");
-	printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜\n");
-	printf("è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„å†…å®¹:");
-	scanf("%d", &a);
-	if (a == 1)
+	char a;
+	printf("©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´\n");
+	printf("©À        1.Ñ§ºÅ         ©È\n");
+	printf("©À        2.ĞÕÃû         ©È\n");
+	printf("©À        3.°à¼¶         ©È\n");
+	printf("©À        4.ÓïÎÄ³É¼¨     ©È\n");
+	printf("©À        5.ÊıÑ§³É¼¨     ©È\n");
+	printf("©À        6.Ó¢Óï³É¼¨     ©È\n");
+	printf("©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼\n");
+	printf("ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÄÚÈİ:");
+	scanf("%c", &a);
+	while (a > '6' || a < '1')
+	{
+		printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(1~6)!!!\n");
+		printf("ÇëÖØĞÂÊäÈë\n");
+		scanf("%c", &a);
+	}
+	if (a == '1')
 	{
 		char num[9];
-		printf("è¯·è¾“å…¥åŒå­¦å­¦å·ï¼š");
+		printf("ÇëÊäÈëÍ¬Ñ§Ñ§ºÅ£º");
 		scanf("%s", num);
+		int x = strlen(num);
+		while (x != 8)
+		{
+			printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+			scanf("%s", num);
+			x = strlen(num);
+		}
 		strcpy(p->num, num);
 	}
-	if (a == 2)
+	if (a == '2')
 	{
-		char name[9];  //å§“å
-		printf("è¯·è¾“å…¥åŒå­¦å§“åï¼š");
+		char name[9];  //ĞÕÃû
+		printf("ÇëÊäÈëÍ¬Ñ§ĞÕÃû£º");
 		scanf("%s", name);
 		strcpy(p->name, name);
 	}
-	if (a == 3)
+	if (a == '3')
 	{
-		char class1[5];//ç­çº§
-		printf("è¯·è¾“å…¥åŒå­¦ç­çº§ï¼š");
+		char class1[5];//°à¼¶
+		printf("ÇëÊäÈëÍ¬Ñ§°à¼¶£º");
 		scanf("%s", class1);
+		int x = strlen(class1);
+		while (x != 8)
+		{
+			printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+			scanf("%s", class1);
+			x = strlen(class1);
+		}
 		strcpy(p->class1, class1);
 	}
-	if (a == 4)
+	if (a == '4')
 	{
-		int yw;        //è¯­æ–‡æˆç»©
-		printf("è¯·è¾“å…¥åŒå­¦è¯­æ–‡æˆç»©ï¼š");
+		int yw;        //ÓïÎÄ³É¼¨
+		printf("ÇëÊäÈëÍ¬Ñ§ÓïÎÄ³É¼¨£º");
 		scanf("%d", &yw);
+		while (yw > 100 || yw < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &yw);
+		}
 		p->yw = yw;
 	}
-	if (a == 5)
+	if (a == '5')
 	{
-		int sx;        //æ•°å­¦æˆç»©
-		printf("è¯·è¾“å…¥åŒå­¦æ•°å­¦æˆç»©ï¼š");
+		int sx;        //ÊıÑ§³É¼¨
+		printf("ÇëÊäÈëÍ¬Ñ§ÊıÑ§³É¼¨£º");
 		scanf("%d", &sx);
+		while (sx > 100 || sx < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &sx);
+		}
 		p->sx = sx;
 	}
-	if (a == 6)
+	if (a == '6')
 	{
-		int yy;        //è‹±è¯­æˆç»©
-		printf("è¯·è¾“å…¥åŒå­¦è‹±è¯­æˆç»©ï¼š");
+		int yy;        //Ó¢Óï³É¼¨
+		printf("ÇëÊäÈëÍ¬Ñ§Ó¢Óï³É¼¨£º");
 		scanf("%d", &yy);
+		while (yy > 100 || yy < 0)
+		{
+			printf("³É¼¨ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë:\n");
+			scanf("%d", &yy);
+		}
 		p->yy = yy;
 	}
 }
@@ -193,6 +404,11 @@ void delete_1(struct student *head, char num[9])
 	free(p);
 }
 
+void change_2(struct student *head)
+{
+
+}
+
 void ywsort(struct student *head)
 {
 	struct student *cur = NULL;
@@ -202,19 +418,45 @@ void ywsort(struct student *head)
 	{
 		while (cur->next != teil)
 		{
-			if (cur->yw > cur->next->yw)
+			if (cur->yw < cur->next->yw)
 			{
-				int tmp = cur->yw;
+				//½»»»Ñ§ºÅ
+				char temp_1[9];
+				strcpy(temp_1, cur->num);
+				strcpy(cur->num, cur->next->num);
+				strcpy(cur->next->num, temp_1);
+				//½»»»ĞÕÃû
+				char temp_2[9];
+				strcpy(temp_2, cur->name);
+				strcpy(cur->name, cur->next->name);
+				strcpy(cur->next->name, temp_2);
+				//½»»»°à¼¶
+				char temp_3[5];
+				strcpy(temp_3, cur->class1);
+				strcpy(cur->class1, cur->next->class1);
+				strcpy(cur->next->class1, temp_3);
+				//½»»»ÓïÎÄ³É¼¨
+				int temp_4 = cur->yw;
 				cur->yw = cur->next->yw;
-				cur->next->yw = tmp;
+				cur->next->yw = temp_4;
+				//½»»»ÊıÑ§³É¼¨
+				int temp_5 = cur->sx;
+				cur->sx = cur->next->sx;
+				cur->next->sx = temp_5;
+				//½»»»Ó¢Óï³É¼¨
+				int temp_6 = cur->yy;
+				cur->yy = cur->next->yy;
+				cur->next->yy = temp_6;
 			}
 			cur = cur->next;
 		}
 		teil = cur;
 		cur = head;
 	}
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
 	for (cur = head; cur; cur = cur->next)
-		printf("%d ", cur->yw);
+		printf("%s\t%s\t%s\t%d\t%d\t%d\n", cur->num, cur->name, cur->class1, cur->yw, cur->sx, cur->yy);
+	getchar();
 }
 
 void sxsort(struct student *head)
@@ -226,19 +468,45 @@ void sxsort(struct student *head)
 	{
 		while (cur->next != teil)
 		{
-			if (cur->sx > cur->next->sx)
+			if (cur->sx < cur->next->sx)
 			{
-				int tmp = cur->sx;
+				//½»»»Ñ§ºÅ
+				char temp_1[9];
+				strcpy(temp_1, cur->num);
+				strcpy(cur->num, cur->next->num);
+				strcpy(cur->next->num, temp_1);
+				//½»»»ĞÕÃû
+				char temp_2[9];
+				strcpy(temp_2, cur->name);
+				strcpy(cur->name, cur->next->name);
+				strcpy(cur->next->name, temp_2);
+				//½»»»°à¼¶
+				char temp_3[5];
+				strcpy(temp_3, cur->class1);
+				strcpy(cur->class1, cur->next->class1);
+				strcpy(cur->next->class1, temp_3);
+				//½»»»ÓïÎÄ³É¼¨
+				int temp_4 = cur->yw;
+				cur->yw = cur->next->yw;
+				cur->next->yw = temp_4;
+				//½»»»ÊıÑ§³É¼¨
+				int temp_5 = cur->sx;
 				cur->sx = cur->next->sx;
-				cur->next->sx = tmp;
+				cur->next->sx = temp_5;
+				//½»»»Ó¢Óï³É¼¨
+				int temp_6 = cur->yy;
+				cur->yy = cur->next->yy;
+				cur->next->yy = temp_6;
 			}
 			cur = cur->next;
 		}
 		teil = cur;
 		cur = head;
 	}
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
 	for (cur = head; cur; cur = cur->next)
-		printf("%d ", cur->sx);
+		printf("%s\t%s\t%s\t%d\t%d\t%d\n", cur->num, cur->name, cur->class1, cur->yw, cur->sx, cur->yy);
+	getchar();
 }
 
 void yysort(struct student *head)
@@ -250,19 +518,45 @@ void yysort(struct student *head)
 	{
 		while (cur->next != teil)
 		{
-			if (cur->yy > cur->next->yy)
+			if (cur->yy < cur->next->yy)
 			{
-				int tmp = cur->yy;
+				//½»»»Ñ§ºÅ
+				char temp_1[9];
+				strcpy(temp_1, cur->num);
+				strcpy(cur->num, cur->next->num);
+				strcpy(cur->next->num, temp_1);
+				//½»»»ĞÕÃû
+				char temp_2[9];
+				strcpy(temp_2, cur->name);
+				strcpy(cur->name, cur->next->name);
+				strcpy(cur->next->name, temp_2);
+				//½»»»°à¼¶
+				char temp_3[5];
+				strcpy(temp_3, cur->class1);
+				strcpy(cur->class1, cur->next->class1);
+				strcpy(cur->next->class1, temp_3);
+				//½»»»ÓïÎÄ³É¼¨
+				int temp_4 = cur->yw;
+				cur->yw = cur->next->yw;
+				cur->next->yw = temp_4;
+				//½»»»ÊıÑ§³É¼¨
+				int temp_5 = cur->sx;
+				cur->sx = cur->next->sx;
+				cur->next->sx = temp_5;
+				//½»»»Ó¢Óï³É¼¨
+				int temp_6 = cur->yy;
 				cur->yy = cur->next->yy;
-				cur->next->yy = tmp;
+				cur->next->yy = temp_6;
 			}
 			cur = cur->next;
 		}
 		teil = cur;
 		cur = head;
 	}
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
 	for (cur = head; cur; cur = cur->next)
-		printf("%d ", cur->yy);
+		printf("%s\t%s\t%s\t%d\t%d\t%d\n", cur->num, cur->name, cur->class1, cur->yw, cur->sx, cur->yy);
+	getchar();
 }
 
 void numsort(struct student *head)
@@ -274,47 +568,90 @@ void numsort(struct student *head)
 	{
 		while (cur->next != teil)
 		{
-			if (cur->yy > cur->next->yy)
+			if (strcmp(cur->num, cur->next->num)<0)
 			{
-				char tmp[9];
-				strcpy(tmp, cur->num);
+				//½»»»Ñ§ºÅ
+				char temp_1[9];
+				strcpy(temp_1, cur->num);
 				strcpy(cur->num, cur->next->num);
-				strcpy(cur->next->num, tmp);
+				strcpy(cur->next->num, temp_1);
+				//½»»»ĞÕÃû
+				char temp_2[9];
+				strcpy(temp_2, cur->name);
+				strcpy(cur->name, cur->next->name);
+				strcpy(cur->next->name, temp_2);
+				//½»»»°à¼¶
+				char temp_3[5];
+				strcpy(temp_3, cur->class1);
+				strcpy(cur->class1, cur->next->class1);
+				strcpy(cur->next->class1, temp_3);
+				//½»»»ÓïÎÄ³É¼¨
+				int temp_4 = cur->yw;
+				cur->yw = cur->next->yw;
+				cur->next->yw = temp_4;
+				//½»»»ÊıÑ§³É¼¨
+				int temp_5 = cur->sx;
+				cur->sx = cur->next->sx;
+				cur->next->sx = temp_5;
+				//½»»»Ó¢Óï³É¼¨
+				int temp_6 = cur->yy;
+				cur->yy = cur->next->yy;
+				cur->next->yy = temp_6;
 			}
 			cur = cur->next;
 		}
 		teil = cur;
 		cur = head;
 	}
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
 	for (cur = head; cur; cur = cur->next)
-		printf("%s ", cur->num);
+		printf("%s\t%s\t%s\t%d\t%d\t%d\n", cur->num, cur->name, cur->class1, cur->yw, cur->sx, cur->yy);
+	getchar();
 }
 
-void scoresort(struct student *head)
+void sort_1(struct student *head)
 {
-	int a;
-	printf("********************\n");
-	printf("        1.æ ¹æ®è¯­æ–‡æˆç»©æ’åº\n");
-	printf("        2.æ ¹æ®æ•°å­¦æˆç»©æ’åº\n");
-	printf("        3.æ ¹æ®è‹±è¯­æˆç»©æ’åº\n");
-	printf("        0.é€€å‡ºç³»ç»Ÿ\n");
-	printf("********************\n");
-	printf("è¯·è¾“å…¥æ‚¨çš„ä¿¡æ¯:");
-	scanf("%d", &a);
-	if (a>3 || a<0)
-		printf("è¯·è¾“å…¥æ­£ç¡®çš„åºå·(0~3):");
-	scanf("%d", &a);
-	if (a == 1)
-		ywsort(head);
-	if (a == 2)
-		sxsort(head);
-	if (a == 3)
-		yysort(head);
-	if (a == 0)
+	while (1)
 	{
-		printf("é€€å‡ºä¸­è¯·ç¨åÂ·Â·Â·\n");
-		Sleep(3000);
-		exit(0);
+		system("cls");
+		char a;
+		printf("********************\n");
+		printf("        1.¸ù¾İÓïÎÄ³É¼¨ÅÅĞò\n");
+		printf("        2.¸ù¾İÊıÑ§³É¼¨ÅÅĞò\n");
+		printf("        3.¸ù¾İÓ¢Óï³É¼¨ÅÅĞò\n");
+		printf("        3.¸ù¾İÑ§ºÅÅÅĞò\n");
+		printf("        0.·µ»ØÉÏÒ»¼¶\n");
+		printf("********************\n");
+		printf("ÇëÊäÈëÄúµÄĞÅÏ¢:");
+		scanf("%c", &a);
+		while (a > '3' || a < '0')
+		{
+			printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~3)!!!\n");
+			printf("ÇëÖØĞÂÊäÈë\n");
+			scanf("%c", &a);
+		}
+		switch (a)
+		{
+		case '1':
+			ywsort(head);
+			break;
+		case '2':
+			sxsort(head);
+			break;
+		case '3':
+			yysort(head);
+			break;
+		case '4':
+			numsort(head);
+			break;
+		case '0':
+		{
+			printf("·µ»ØÖĞÇëÉÔºó¡¤¡¤¡¤\n");
+			Sleep(1000);
+			administrator(head);
+		}
+		break;
+		}
 	}
 }
 
@@ -322,333 +659,584 @@ void chaxun(struct student *head, char num[9])
 {
 	struct student *p;
 	p = find(head, num);
-	printf("å­¦å· å§“å ç­çº§ è¯­æ–‡ æ•°å­¦ è‹±è¯­\n");
-	printf("%s %s %s %d %d %d\n", p->num, p->name, p->class1, p->yw, p->sx, p->sx, p->yy);
+	printf("Ñ§ºÅ\tĞÕÃû\t°à¼¶\tÓïÎÄ\tÊıÑ§\tÓ¢Óï\n");
+	printf("%s\t%s\t%s\t%d\t%d\t%d\n", p->num, p->name, p->class1, p->yw, p->sx, p->yy);
 	getchar();
 }
 
-struct student *finput(int a)//æ–‡ä»¶å½•å…¥ 
+void menu(struct student *head)//Ö÷²Ëµ¥
 {
-
-	FILE *fp;
-	struct student *pHead = NULL, *pEnd, *pNew;
-	int sum = 0, i, j, num;
-	char filename[100];
-	if (a == 2)
-	{
-		printf("è¯·è¾“å…¥æ–‡ä»¶è·¯å¾„åŠæ–‡ä»¶åï¼š");
-		fflush(stdin);
-		gets(filename);
-	}
-	pEnd = pHead = (struct student *)malloc(sizeof(struct student));
-	fp = fopen(filename, "rt+");
-	if (fp == NULL)
-	{
-		printf("ä¸èƒ½æ‰“å¼€æ–‡ä»¶");
-		exit(1);
-	}
-	while (1)
-	{
-		sum = 0;
-		pNew = (struct student *)malloc(sizeof(struct student));
-		fscanf(fp, "%s %s %s %d %d %d", pNew->num, pNew->name, pNew->class1, pNew->yw, pNew->sx, pNew->yy);
-		pEnd->next = pNew;
-		pEnd = pNew;
-	}
-	pEnd->next = NULL;
-	fclose(fp);
-	return pHead;
-}
-
-
-void menu(struct student *head)//ä¸»èœå•
-{
-	int a;
+	char a;
 	printf("********************\n");
-	printf("        1.ç®¡ç†å‘˜\n");
-	printf("        2.è€å¸ˆ\n");
-	printf("        3.å­¦ç”Ÿ\n");
-	printf("        0.é€€å‡ºç³»ç»Ÿ\n");
+	printf("        1.¹ÜÀíÔ±\n");
+	printf("        2.ÀÏÊ¦\n");
+	printf("        3.Ñ§Éú\n");
+	printf("        0.ÍË³öÏµÍ³\n");
 	printf("********************\n");
-	printf("è¯·è¾“å…¥æ‚¨çš„ä¿¡æ¯:");
-	scanf("%d", &a);
-	if (a>3 || a<0)
-		printf("è¯·è¾“å…¥æ­£ç¡®çš„åºå·(0~3):");
-	if (a == 1)
+	printf("ÇëÊäÈëÄúµÄĞÅÏ¢:");
+	scanf("%c", &a);
+	while (a > '3' || a < '0')
 	{
+		printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~3)!!!\n");
+		printf("ÇëÖØĞÂÊäÈë\n");
+		scanf("%c", &a);
+	}
+	if (a == '1')
+	{
+		struct login_a *head_a;
+		head_a=inf_l_a();
+		login_1(head_a);
 		administrator(head);
 		system("cls");
 	}
-	if (a == 2)
+	if (a == '2')
 	{
 		teacher(head);
 		system("cls");
 	}
-	if (a == 3)
+	if (a == '3')
 	{
 		student_1(head);
 		system("cls");
 	}
-	if (a == 0)
+	if (a == '0')
 	{
-		printf("é€€å‡ºä¸­è¯·ç¨åÂ·Â·Â·\n");
-		Sleep(3000);
+		printf("ÍË³öÖĞÇëÉÔºó¡¤¡¤¡¤\n");
 		exit(0);
 	}
 }
 
-void administrator(struct student *head)//ç®¡ç†å‘˜é€‰å•
+void login_1(struct login_a *head_a)
 {
-	int a;
-	while (1)
+	printf("ÇëÊäÈëÕËºÅ:\n");
+	char username[20];
+	scanf("%s", username);
+	printf("ÇëÊäÈëÃÜÂë:\n");
+	char password[20];
+	scanf("%s", password);
+	struct login_a *p;
+	p = find_l(head_a, username);
+	int i = 0;
+	while (strcmp(p->password, password))
 	{
-		system("cls");
-		printf("********************\n");
-		printf("\t1.æ–°å»ºå­¦ç”Ÿä¿¡æ¯    2.ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯    3.åˆ é™¤å­¦ç”Ÿä¿¡æ¯\n");
-		printf("\t4.æ·»åŠ å­¦ç”Ÿä¿¡æ¯    5.å­¦ç”Ÿå­¦å·æ’åº    6.å­¦ç”Ÿæˆç»©æ’åº\n");
-		printf("\t7.æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯    8.ä¿®æ”¹è€å¸ˆå¯†ç     9.æ·»åŠ å­¦ç”Ÿè´¦å·\n");
-		printf("\t10.ä¿®æ”¹å­¦ç”Ÿå¯†ç    11.ä¿®æ”¹å¯†ç        12.æ–°å»ºå­¦ç”Ÿä¿¡æ¯ 13.è¾“å‡ºå…¨éƒ¨å­¦ç”Ÿä¿¡æ¯ \n");
-		printf("\t0.é€€å‡ºç³»ç»Ÿ\n");
-		printf("********************\n");
-		printf("è¯·è¾“å…¥æ‚¨éœ€è¦çš„åŠŸèƒ½:");
-		scanf("%d", &a);
-		if (a > 13 || a < 0)
-			printf("è¯·è¾“å…¥æ­£ç¡®çš„åºå·(0~13\n");
-		else
+		printf("ÃÜÂëÊäÈë´íÎó£¬Äã»¹ÓĞ%d´Î»ú»á£¬ÇëÖØĞÂÊäÈë\n", 3 - i);
+		scanf("%s", password);
+		i++;
+		if (i == 2)
 		{
-			switch (a)
-			{
-			case 1:
-			{
-				system("cls");
-				head=create();
-			}
-			break;
-			case 2:
-			{
-				getchar();
-				system("cls");
-				char num[9];
-				scanf("%s", num);
-				change(head, num);
-			}
-			break;
-			case 3:
-			{
-				getchar();
-				system("cls");
-				char num[9];
-				scanf("%s", num);
-				delete_1(head, num);
-			}
-			break;
-			case 4:
-			{
-				system("cls");
-				insert(head);
-			}
-			break;
-			case 5:
-			{
-				system("cls");
-				numsort(head);
-			}
-			break;
-			case 6:
-			{
-				system("cls");
-				scoresort(head);
-				
-			}
-			break;
-			case 7:
-			{
-				system("cls");
-				char num[9];
-				printf("è¯·è¾“å…¥å­¦ç”Ÿå­¦å·");
-				scanf("%s", num);
-				getchar();
-				chaxun(head, num);
-			}
-			break;
-			case 8:
-			case 9:
-			case 10:
-			case 11:
-			{
-				system("cls");
-				printf("åŠŸèƒ½æ­£åœ¨å®Œå–„ä¸­\n");
-				printf("å³å°†è¿”å›ä¸Šä¸€çº§```\n");
-				Sleep(3000);
-				administrator(head);
-			}
-			break;
-			case 12:
-			{
-				system("cls");
-				insert(head);
-			}
-			break;
-			case 13:
-			{
-				system("cls");
-				output(head);
-				getchar();
-			}
-			break;
-			case 0:
-			{
-				system("cls");
-				printf("è¿”å›ä¸­è¯·ç¨åÂ·Â·Â·\n");
-				Sleep(3000);
-			}
-			break;
-			}
+			printf("ÃÜÂë3´Î´íÎóÊäÈë£¬³ÌĞòÍË³ö!!!\n");
+			Sleep(1000);
+			exit(0);
 		}
 	}
 }
 
-void teacher(struct student *head)//è€å¸ˆé€‰å•
+void logininf(struct student *head,struct login_a *head_a)
 {
-	int a;
+	char a;
+	while (1)
+	{
+		printf("\t1.Ìí¼ÓÀÏÊ¦ÕËºÅ\t2.ĞŞ¸ÄÀÏÊ¦ÃÜÂë\n");
+		printf("\t3.Ìí¼ÓÑ§ÉúĞÅÏ¢\t4.ĞŞ¸ÄÑ§ÉúÃÜÂë\n");
+		printf("\t5.ĞŞ¸Ä×Ô¼ºÃÜÂë\t0.·µ»ØÉÏÒ»¼¶\n");
+		scanf("%c", &a);
+		while (a > '5' || a < '0')
+		{
+			printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~5)!!!\n");
+			printf("ÇëÖØĞÂÊäÈë\n");
+			scanf("%c", &a);
+		}
+		switch (a)
+		{
+		case '1':
+			printf("¹¦ÄÜÕıÔÚÉı¼¶");
+			Sleep(1000);
+			logininf(head,head_a);
+			break;
+		case '2':
+			printf("¹¦ÄÜÕıÔÚÉı¼¶");
+			Sleep(1000);
+			logininf(head, head_a);
+			break;
+		case '3':
+			printf("¹¦ÄÜÕıÔÚÉı¼¶");
+			Sleep(1000);
+			logininf(head, head_a);
+			break;
+		case '4':
+			printf("¹¦ÄÜÕıÔÚÉı¼¶");
+			Sleep(1000);
+			logininf(head, head_a);
+			break;
+		case '5':
+			char username[20];
+			scanf("%s", username);
+			change_l_a(head_a,username);
+			break;
+		case '0':
+			printf("ÕıÔÚ·µ»ØÉÏÒ»¼¶£¬ÇëÉÔµÈ¡­¡­\n");
+			Sleep(1000);
+			administrator(head, head_a);
+			break;
+		}
+	}
+	
+
+}
+
+void administrator(struct student *head, struct login_a *head_a)//¹ÜÀíÔ±Ñ¡µ¥
+{
+	char a;
+	while (1)
+	{
+		getchar();
+		system("cls");
+		printf("********************\n");
+		printf("\t1.ĞÂ½¨Ñ§ÉúĞÅÏ¢	2.ĞŞ¸ÄÑ§ÉúĞÅÏ¢    3.É¾³ıÑ§ÉúĞÅÏ¢\n");
+		printf("\t4.Ìí¼ÓÑ§ÉúĞÅÏ¢	5.Ñ§ÉúĞÅÏ¢ÅÅĞò    6.²éÑ¯Ñ§ÉúĞÅÏ¢\n");
+		printf("\t7.´òÓ¡Ñ§ÉúĞÅÏ¢	8.±£´æµ½ÎÄ¼ş      9.µÇÂ½ĞÅÏ¢¹ÜÀí\n");
+		printf("\t0.ÍË³öÏµÍ³\n");
+		printf("********************\n");
+		printf("ÇëÊäÈëÄúĞèÒªµÄ¹¦ÄÜ:");
+		scanf("%c", &a);
+		while (a > '9' || a < '0')
+			// while (strcmp(a,"15") > 0 || strcmp(a,"0")<0)
+		{
+			printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~15)!!!\n");
+			printf("ÇëÖØĞÂÊäÈë\n");
+			scanf("%c", &a);
+		}
+		switch (a)
+		{
+		case '1':
+		{
+			system("cls");
+			head = create();
+		}
+		break;
+		case '2':
+		{
+			getchar();
+			system("cls");
+			char num[9];
+			scanf("%s", num);
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			change_1(head, num);
+		}
+		break;
+		case '3':
+		{
+			getchar();
+			system("cls");
+			char num[9];
+			scanf("%s", num);
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			delete_1(head, num);
+		}
+		break;
+		case '4':
+		{
+			system("cls");
+			insert(head);
+		}
+		break;
+		case '5':
+		{
+			system("cls");
+			sort_1(head);
+		}
+		break;
+		case '6':
+		{
+			system("cls");
+			char num[9];
+			printf("ÇëÊäÈëÑ§ÉúÑ§ºÅ:");
+			scanf("%s", num);
+			getchar();
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			chaxun(head, num);
+		}
+		break;
+		case '7':
+		{
+			system("cls");
+			output();
+		}
+		break;
+		case '8':
+			save_1(head);
+			break;
+		case '9':
+		{
+			logininf(head, head_a);
+		}
+		break;
+		case '0':
+		{
+			printf("ÍË³öÖĞÇëÉÔºó¡¤¡¤¡¤\n");
+			Sleep(1000);
+			exit(0);
+		}
+		break;
+		}
+	}
+}
+
+void teacher(struct student *head)//ÀÏÊ¦Ñ¡µ¥
+{
+	char a;
 	while (1)
 	{
 		system("cls");
 		printf("********************\n");
-		printf("\t1.æ·»åŠ æœ¬ç­å­¦ç”Ÿä¿¡æ¯    2.ä¿®æ”¹æœ¬ç­å­¦ç”Ÿä¿¡æ¯    3.åˆ é™¤æœ¬ç­å­¦ç”Ÿä¿¡æ¯\n");
-		printf("\t4.æœ¬ç­å­¦ç”Ÿæˆç»©æ’åº    5.æœ¬ç­å­¦ç”Ÿå­¦å·æ’åº    6.æŸ¥è¯¢æœ¬ç­å­¦ç”Ÿä¿¡æ¯\n");
-		printf("\t7.ä¿®æ”¹å¯†ç            0.é€€å‡ºç³»ç»Ÿ\n");
+		printf("\t1.Ìí¼Ó±¾°àÑ§ÉúĞÅÏ¢    2.ĞŞ¸Ä±¾°àÑ§ÉúĞÅÏ¢    3.É¾³ı±¾°àÑ§ÉúĞÅÏ¢\n");
+		printf("\t4.±¾°àÑ§Éú³É¼¨ÅÅĞò    5.±¾°àÑ§ÉúÑ§ºÅÅÅĞò    6.²éÑ¯±¾°àÑ§ÉúĞÅÏ¢\n");
+		printf("\t7.ĞŞ¸ÄÃÜÂë                                  0.·µ»ØÉÏÒ»¼¶\n");
 		printf("********************\n");
-		printf("è¯·è¾“å…¥æ‚¨éœ€è¦çš„åŠŸèƒ½:");
-		scanf("%d", &a);
-		if (a > 6 || a < 0)
-			printf("è¯·è¾“å…¥æ­£ç¡®çš„åºå·(0~7\n");
-		else
+		printf("ÇëÊäÈëÄúĞèÒªµÄ¹¦ÄÜ:");
+		scanf("%c", &a);
+		while (a > '7' || a < '0')
 		{
-			switch (a)
-			{
-			case 1:
-			{
-				system("cls");
-				insert(head);
-			}
-				break;
-			case 2:
-			{
-				system("cls");
-				char num[9];
-				scanf("%s", num);
-				change(head, num);
-			}
-			break;
-			case 3:
-			{
-				system("cls");
-				char num[9];
-				scanf("%s", num);
-				delete_1(head, num);
-			}
-			break;
-			case 4:
-			{
-				system("cls");
-				scoresort(head);
-			}
-				break;
-			case 5:
-			{
-				system("cls");
-				numsort(head);
-			}
-				break;
-			case 6:
-			{
-				system("cls");
-				char num[9];
-				scanf("%s", num);
-				chaxun(head, num);
-			}
-			break;
-			case 7:
-			{
-				system("cls");
-				printf("åŠŸèƒ½æ­£åœ¨å®Œå–„ä¸­\n");
-				printf("å³å°†è¿”å›ä¸Šä¸€çº§```\n");
-				Sleep(3000);
-				teacher(head);
-			}
-			// changeteacher();
-			break;
-			case 0:
-			{
-				system("cls");
-				printf("è¿”å›ä¸­è¯·ç¨åÂ·Â·Â·\n");
-				Sleep(3000);
-			}
-			break;
-			}
+			printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~7)!!!\n");
+			printf("ÇëÖØĞÂÊäÈë\n");
+			scanf("%c", &a);
 		}
-		exit(0);
+		switch (a)
+		{
+		case '1':
+		{
+			system("cls");
+			insert(head);
+		}
+		break;
+		case '2':
+		{
+			system("cls");
+			char num[9];
+			scanf("%s", num);
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			change_1(head, num);
+		}
+		break;
+		case '3':
+		{
+			system("cls");
+			char num[9];
+			scanf("%s", num);
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			delete_1(head, num);
+		}
+		break;
+		case '4':
+		{
+			system("cls");
+			sort_1(head);
+		}
+		break;
+		case '5':
+		{
+			system("cls");
+			numsort(head);
+		}
+		break;
+		case '6':
+		{
+			system("cls");
+			char num[9];
+			scanf("%s", num);
+			int x = strlen(num);
+			while (x != 8)
+			{
+				printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë8Î»Ñ§ºÅ:");
+				scanf("%s", num);
+				x = strlen(num);
+			}
+			chaxun(head, num);
+			getchar();
+		}
+		break;
+		case '7':
+		{
+			system("cls");
+			printf("¹¦ÄÜÕıÔÚÍêÉÆÖĞ\n");
+			printf("¼´½«·µ»ØÉÏÒ»¼¶```\n");
+			Sleep(3000);
+			teacher(head);
+		}
+		break;
+		case '0':
+		{
+			system("cls");
+			printf("·µ»ØÖĞÇëÉÔºó¡¤¡¤¡¤\n");
+			Sleep(1000);
+			exit(0);
+		}
+		break;
+		}
 	}
 }
 
-void student_1(struct student *head)//å­¦ç”Ÿé€‰å•
+void student_1(struct student *head)//Ñ§ÉúÑ¡µ¥
 {
 	system("cls");
-	int a;
+	char a;
 	char num[9];
-	printf("è¯·è¾“å…¥ä½ çš„å­¦å·ï¼š");
+	printf("ÇëÊäÈëÄãµÄÑ§ºÅ£º");
 	scanf("%s", num);
+	int x = strlen(num);
+	while (x != 8)
+	{
+		printf("Ñ§ºÅÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë8Î»Ñ§ºÅ:");
+		scanf("%s", num);
+		x = strlen(num);
+	}
 	while (1)
 	{
 		printf("********************\n");
-		printf("\t1.æŸ¥çœ‹è‡ªå·±ä¿¡æ¯\n");
-		printf("\t2.æŸ¥çœ‹æˆç»©æ’å\n");
-		printf("\t3.ä¿®æ”¹è‡ªå·±å¯†ç \n");
-		printf("\t4.è¿”å›ä¸Šä¸€çº§\n");
-		printf("\t0.é€€å‡ºç³»ç»Ÿ \n");
+		printf("\t1.²é¿´×Ô¼ºĞÅÏ¢\n");
+		printf("\t2.²é¿´³É¼¨ÅÅÃû\n");
+		printf("\t3.ĞŞ¸Ä×Ô¼ºÃÜÂë\n");
+		printf("\t0.·µ»ØÉÏÒ»¼¶\n");
 		printf("********************\n");
-		printf("è¯·è¾“å…¥æ‚¨éœ€è¦çš„åŠŸèƒ½:");
-		scanf("%d", &a);
-		if (a > 4 || a < 0)
-			printf("è¯·è¾“å…¥æ­£ç¡®çš„åºå·(0~4)\n");
-		switch(a)
+		printf("ÇëÊäÈëÄúĞèÒªµÄ¹¦ÄÜ:");
+		scanf("%c", &a);
+		while (a > '3' || a < '0')
 		{
-		case 1:
-			{
-				system("cls");
-				chaxun(head, num);
-			}
-			break;
-		case 2:
-			{
-				system("cls");
-				printf("adsfsad\n");
-				Sleep(2000);
-			}
-			break;
-		case 3:
-			{
-				system("cls");
-				printf("åŠŸèƒ½æ­£åœ¨å®Œå–„ä¸­\n");
-				printf("å³å°†è¿”å›ä¸Šä¸€çº§```\n");
-				Sleep(2000);
-				student_1(head);
-			}
-			break;
-		case 4:
-			{
-				system("cls");
-				menu(head);
-			}
-			break;
-			// changestudent_1();
+			printf("ÇëÊäÈëÕıÈ·µÄĞòºÅ(0~3)!!!\n");
+			printf("ÇëÖØĞÂÊäÈë\n");
+			scanf("%c", &a);
+		}
+		switch (a)
+		{
+		case '1':
+		{
+			system("cls");
+			chaxun(head, num);
+			getchar();
+		}
+		break;
+		case '2':
+		{
+			system("cls");
+			printf("adsfsad\n");
+			Sleep(1000);
+		}
+		break;
+		case '3':
+		{
+			system("cls");
+			printf("¹¦ÄÜÕıÔÚÍêÉÆÖĞ\n");
+			printf("¼´½«·µ»ØÉÏÒ»¼¶```\n");
+			Sleep(1000);
+			student_1(head);
+		}
+		break;
+		case '0':
+		{
+			system("cls");
+			printf("·µ»ØÖĞÇëÉÔºó¡¤¡¤¡¤\n");
+			Sleep(1000);
+			exit(0);
+		}
+		break;
 		}
 	}
 }
+
+
+
+struct login_a *create_a()//´´½¨¹ÜÀíÔ±µÇÂ½Á´±í
+{
+	struct login_a *head_a, *p;
+	char username[20];	//ÕËºÅ
+	char password[20];  //ÃÜÂë
+	head_a = NULL;
+	getchar();
+	printf("ÇëÊäÈëÓÃ»§Ãû");
+	gets_s(username);
+	printf("ÇëÊäÈëÃÜÂë");
+	gets_s(password);
+	p = (struct login_a *)malloc(sizeof(struct login_a));
+	strcpy(p->username, username);
+	strcpy(p->password, password);
+	p->next = NULL;
+	head_a = p;
+	return head_a;
+}
+
+void insert_l_a(struct login_a *head_a)//Ôö¼Ó¹ÜÀíÔ±µÇÂ¼Á´±í½Úµã
+{
+	struct login_a *p, *q;
+	char username[20];
+	char password[20];
+	printf("ÇëÊäÈëÕËºÅ£º");
+	scanf("%s", username);
+	int a = strlen(username);
+	while (a > 20 || a < 1)
+	{
+		printf("ÕËºÅ¸ñÊ½´íÎó£¬ÇëÖØĞÂÊäÈë:");
+		scanf("%s", username);
+		a = strlen(username);
+	}
+	printf("ÇëÊäÈëÃÜÂë£º");
+	scanf("%s", password);
+	a = strlen(password);
+	while (a > 20 || a < 1)
+	{
+		printf("ÃÜÂë¸ñÊ½´íÎó£¬ÇëÖØĞÂÊäÈë:");
+		scanf("%s", password);
+		a = strlen(password);
+	}
+	p = (struct login_a *)malloc(sizeof(struct login_a));
+	q = (struct login_a *)malloc(sizeof(struct login_a));
+	q = head_a->next;
+	strcpy(p->username, username);
+	strcpy(p->password, password);
+	head_a->next = p;
+	p->next = q;
+}
+
+struct login_a *find_l(struct login_a *head_a, char username[20])//²éÑ¯¹ÜÀíÔ±µÇÂ½ÕËºÅ
+{
+	struct login_a *p, *q;
+	q = (struct login_a *)malloc(sizeof(struct login_a));
+	int i = 0;
+	for (p = head_a; p != NULL; p = p->next)
+		if (!strcmp(username, p->username))
+		{
+			i = 1;
+			break;
+		}
+	if (i == 0)
+	{
+		printf("²éÑ¯²»µ½½á¹û£¬ÇëÖØĞÂÊäÈë:");
+		getchar();
+		scanf("%s", username);
+		find_l(head_a, username);
+	}
+	return p;
+}
+
+void delete_1(struct login_a *head_a, char username[20])//É¾³ıÕË»§
+{
+	struct login_a *p, *q;
+	p = (struct login_a *)malloc(sizeof(struct login_a));
+	q = (struct login_a *)malloc(sizeof(struct login_a));
+	p = find_l(head_a, username);
+	q->next = p;
+	q->next = p->next;
+	free(p);
+}
+
+void change_l_a(struct login_a *head_a, char username[20])//ĞŞ¸Ä¹ÜÀíÔ±ÃÜÂë
+{
+	struct login_a *p;
+	p = (struct login_a *)malloc(sizeof(struct login_a));
+	p = find_l(head_a, username);
+	char password_o[20], password_n[20];
+	printf("ÇëÊäÈë¾ÉµÄÃÜÂë:\n");
+	scanf("%s", password_o);
+	while (strcmp(p->password, password_o))
+	{
+		printf("ÃÜÂëÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë\n");
+		scanf("%s", password_o);
+	}
+	printf("ÇëÊäÈëĞÂµÄÃÜÂë:\n");
+	scanf("%s", password_n);
+	strcpy(p->password, password_n);
+	printf("ÃÜÂëĞŞ¸Ä³É¹¦!!!\n");
+	printf("°´ÈÎÒâ¼ü·µ»Ø\n");
+	getchar();
+}
+
+void save_2(struct login_a *head_a)//¹ÜÀíÔ±µÇÂ½ÎÄ¼ş±£´æ
+{
+	struct login_a *log, *p;
+	FILE *fp;
+	fp = fopen("d:/login_a.txt", "wt+");
+	log = p = head_a;
+	while (log)
+	{
+		p = log ->next;
+		if (!p)
+		{
+			fprintf(fp, "%s\t%s", log->username, log->password);
+			break;
+		}
+		fprintf(fp, "%s\t%s", log->username, log->password);
+		log = log->next;
+	}
+	printf("ÎÄ¼şĞ´Èë³É¹¦,Çë°´ÈÎÒâ¼ü\n");
+	getchar();
+	fclose(fp);
+}
+
+struct login_a *inf_l_a()//¹ÜÀíÔ±ÃÜÂëÎÄ¼şĞÅÏ¢Â¼ÈëÁ´±í
+{
+	struct login_a *head_a, *r, *stu;
+	head_a = (struct login_a *)malloc(sizeof(struct login_a));
+	FILE *fp;
+	printf("***********ÎÄ¼ş¶ÁÈë*************\n");
+	fp = fopen("d:/login_a.txt", "rt");
+	r = head_a;
+	while (!feof(fp))
+	{
+		stu = (struct login_a *)malloc(sizeof(struct login_a));
+		fscanf(fp, "%s %s", stu->username, stu->password);
+		r->next = stu;
+		r = stu;
+	}
+	r->next = NULL;
+	fclose(fp);
+	printf("ÎÄ¼ş¶ÁÈ¡³É¹¦£¡£¡\n");
+	printf("ÕıÔÚÌø×ª£¬ÇëÉÔºó¡­¡­\n");
+	Sleep(1000);
+	system("cls");
+	head_a = head_a->next;
+	return head_a;
+}
+
+struct login_t//ÀÏÊ¦ÕËºÅÃÜÂë
+{
+	char username[20];
+	char password[20];
+	struct login_t *next;
+};
 
 int main()
 {
-	struct student *head = NULL;
+	struct student *head;
+	//head = NULL;
+	head = inf_1();
 	menu(head);
 }
