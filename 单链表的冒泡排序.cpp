@@ -5,11 +5,11 @@ typedef struct LinkNode
 {
     DataType data;
     struct LinkNode *next;
-} LinkNode, *pLinkNode; //ç»“ç‚¹ç»“æž„ä½“
+} LinkNode, *pLinkNode; //½áµã½á¹¹Ìå
 typedef struct LinkList
 {
-    LinkNode *pHead;    //å¤´ç»“ç‚¹æŒ‡é’ˆ
-} LinkList, *pLinkList; //é“¾è¡¨
+    LinkNode *pHead;    //Í·½áµãÖ¸Õë
+} LinkList, *pLinkList; //Á´±í
 void BubbleSort (pLinkList pList)
 {
     pLinkNode cur = NULL;

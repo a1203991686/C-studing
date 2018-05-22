@@ -4,7 +4,7 @@ struct node
 {
     int data;
     struct node *next;
-}; //åˆ›å»ºé“¾è¡¨
+}; //½á¹¹Ìå¶¨Òå
 int main()
 {
     struct node *head, *p, *q;
@@ -25,23 +25,23 @@ int main()
         }
         q = p;
     }
-    // å¤´æ’æ³•
+    // ´´½¨Á´±í
     scanf("%d", &a);
     p = (struct node *)malloc(sizeof(struct node));
     p->next = head;
     p->data = a;
     head = p;
-    //å°¾æ’æ³•
+    //Í·²å·¨
     scanf("%d", &a);
     p = (struct node *)malloc(sizeof(struct node));
     p->data = a;
     q->next = NULL;
     q->next = p;
     p->next = NULL;
-    ///åˆ é™¤
+    ///Î²²å·¨
     int del;
     struct node *pTemp, *pPre;
-    printf("è¯·è¾“å…¥éœ€è¦åˆ é™¤çš„ä½ç½®:\n");
+    printf("ÇëÊäÈëĞèÒªÉ¾³ıµÄÊı¾İ:\n");
     scanf("%d", &del);
     pTemp = head;
     pPre = pTemp;
@@ -52,7 +52,7 @@ int main()
     }
     pPre->next = pTemp->next;
     free(pTemp);
-    //å†’æ³¡æ’åº
+    //É¾³ı
     struct node *cur = NULL;
     struct node *teil = NULL;
     cur = head;
@@ -71,7 +71,7 @@ int main()
         teil = cur;
         cur = head;
 	}
-    // è¾“å‡º
+    // Ã°ÅİÅÅĞò
     /*t = head;
     while(t!=NULL)
     {

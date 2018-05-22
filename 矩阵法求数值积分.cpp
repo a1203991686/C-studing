@@ -8,14 +8,14 @@ int main(int argc, char** argv)
     char e[10];
     float E = 2.71828;
     d = 180.0 / 3.1415926;
-    printf("è¯·è¾“å…¥èŒƒå›´ï¼š\n");
+    printf("ÇëÊäÈë·¶Î§£º\n");
     scanf("%f%f", &a, &b);
-    printf("è¯·è¾“å…¥ä¸‰è§’å‡½æ•°çš„ç±»åž‹ï¼š\n");
+    printf("ÇëÊäÈëÈý½Çº¯ÊýµÄÀàÐÍ£º\n");
     scanf("%s", e);
     if ( strcmp(e, "cos") == 0 )
-        printf("è¯¥ç§¯åˆ†çš„å€¼ä¸ºï¼š%.3f", sin(a * d) - sin(b * d));
+        printf("¸Ã»ý·ÖµÄÖµÎª£º%.3f", sin(a * d) - sin(b * d));
 	if ( strcmp(e, "sin") == 0 )
-        printf("è¯¥ç§¯åˆ†çš„å€¼ä¸ºï¼š%.3f", cos(b * d) - cos(a * d));
+        printf("¸Ã»ý·ÖµÄÖµÎª£º%.3f", cos(b * d) - cos(a * d));
     if ( strcmp(e, "ex") == 0 )
     {
 		while ( a > 0 )
@@ -36,7 +36,7 @@ int main(int argc, char** argv)
                 E = 1.0 / E;
             }
 		}
-        printf("è¯¥ç§¯åˆ†çš„å€¼ä¸ºï¼š%.3f", E);
+        printf("¸Ã»ý·ÖµÄÖµÎª£º%.3f", E);
     }
     return 0;
 }*/
@@ -53,9 +53,9 @@ int main()
     s1 = integrel(f[0], 0, 1);
     s2 = integrel(f[1], -1, 1);
     s3 = integrel(f[2], 0, 2);
-    printf("sin(x)åœ¨åŒºé—´[ 0,1]ä¸Šçš„ç§¯åˆ†ä¸ºs1=%lf\n", s1);
-    printf("cos(x)åœ¨åŒºé—´[-1,1]ä¸Šçš„ç§¯åˆ†ä¸ºs2=%lf\n", s2);
-    printf("exp(x)åœ¨åŒºé—´[ 0,2]ä¸Šçš„ç§¯åˆ†ä¸ºs3=%lf\n", s3);
+    printf("sin(x)ÔÚÇø¼ä[ 0,1]ÉÏµÄ»ý·ÖÎªs1=%lf\n", s1);
+    printf("cos(x)ÔÚÇø¼ä[-1,1]ÉÏµÄ»ý·ÖÎªs2=%lf\n", s2);
+    printf("exp(x)ÔÚÇø¼ä[ 0,2]ÉÏµÄ»ý·ÖÎªs3=%lf\n", s3);
     return 0;
 }
 double integrel(double (*f)(double ),double a,double b)

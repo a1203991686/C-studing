@@ -7,7 +7,7 @@ int SIZEchar(char a[])
 	while (a[i] != '\0')
 		i++;
 	return i;
-}/*å®šä¹‰sizeå‡½æ•°æ±‚é•¿åº¦*/
+}/*¶¨Òåsizeº¯ÊıÇó³¤¶È*/
 int main()
 {
 	const int M = 30;
@@ -17,22 +17,22 @@ int main()
 	//scanf_s("%s", a1);
 	gets(a1);
 	printf("please input a2\n");
-	//scanf_s("%s", a2); /*ä»é”®ç›˜é”®å…¥a1,a2*/
+	//scanf_s("%s", a2); /*´Ó¼üÅÌ¼üÈëa1,a2*/
 	gets(a2);
 	int b1, b2;
 	b1 =  SIZEchar(a1);
-	b2 =  SIZEchar(a2);/*è®¡ç®—a1ã€a2æ•°çš„é•¿åº¦*/
+	b2 =  SIZEchar(a2);/*¼ÆËãa1¡¢a2ÊıµÄ³¤¶È*/
 	int c1[M], c2[M], c3[M];
 	int i;
 	for (i = 0; i < b1; i++)
 	{
 		c1[i] = a1[i] - '0';
-	}/*å°†d1è½¬ä¸ºä¸€ç»´æ•°ç»„*/
+	}/*½«d1×ªÎªÒ»Î¬Êı×é*/
 	printf("\n");
 	for (i = 0; i < b2; i++)
 	{
 		c2[i] = a2[i] - '0';
-	}/*å°†d2è½¬ä¸ºä¸€ç»´æ•°ç»„*/
+	}/*½«d2×ªÎªÒ»Î¬Êı×é*/
 	printf("\n");
 	for (i = 0; i < b1; i++)
 		printf("%d", c1[i]);
@@ -47,7 +47,7 @@ int main()
 		else
 			c2[i] = 0;
 	}
-	for (i = b1-1; i >= 0; i--)/*è®¡ç®—*/
+	for (i = b1-1; i >= 0; i--)/*¼ÆËã*/
 	{
 		if (i < b1-b2)
 			c2[i] = 0;
@@ -59,7 +59,7 @@ int main()
 			c1[i - 1] -= 1;
 		}
 	}
-	int x = 0;/*xä¸ºc3çš„è®¡æ•°å™¨*/
+	int x = 0;/*xÎªc3µÄ¼ÆÊıÆ÷*/
 	for (i = 0; i < b1; i++,x++)
 	{
 		if (c3[i] != 0)

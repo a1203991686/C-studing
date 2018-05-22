@@ -5,10 +5,10 @@ int main()
     int x;
     int i, j;
     int P;
-    printf("è¯·è¾“å…¥å¤šé¡¹å¼å„é¡¹ç³»æ•°:\n");
+    printf("ÇëÊäÈë¶àÏîÊ½¸÷ÏîÏµÊı:\n");
     for (i = 0; i < 10;i++)
         scanf("%d", &a[i]);
-    printf("è¯·è¾“å…¥xçš„å€¼:\n");
+    printf("ÇëÊäÈëxµÄÖµ:\n");
     scanf("%d", &x);
     P = a[0] * x + a[1];
     for (i = 2; i < 10;i++)

@@ -5,8 +5,8 @@
  * @Last Modified time: 2018-03-29 22:08:33
  */
 /*
- * å‡å®šä¸€ä¸ªæœ‰åºæ•°ç»„a[20]çš„æœ‰æ•ˆé•¿åº¦ä¸º10ã€‚
- * ç°è¾“å…¥ä¸€ä¸ªæ•°x,å¦‚æœæ•°ç»„aä¸­æœ‰ç›¸åŒçš„æ•°ï¼Œåˆ™ç»Ÿç»Ÿåˆ é™¤
+ * ¼Ù¶¨Ò»¸öÓĞĞòÊı×éa[20]µÄÓĞĞ§³¤¶ÈÎª10¡£
+ * ÏÖÊäÈëÒ»¸öÊıx,Èç¹ûÊı×éaÖĞÓĞÏàÍ¬µÄÊı£¬ÔòÍ³Í³É¾³ı
  */
 #include "stdio.h"
 #include "conio.h"
@@ -27,12 +27,12 @@ void Sort(  int a[ ] , int n)
 
 void delx(int a[ ],int n,int p) 
 {
-    int i; /*åˆ é™¤pä½ç½®çš„x */
+    int i; /*É¾³ıpÎ»ÖÃµÄx */
     for(i=p+1;i<n;i++)
         a[i - 1] = a[i];
 }
 
-int FindPos(int a[ ],int n,int x)/* æŠ˜åŠæŸ¥æ‰¾ç®—æ³• */
+int FindPos(int a[ ],int n,int x)/* ÕÛ°ë²éÕÒËã·¨ */
 { 
     int top=0,bottom=n-1,mid;
     if (x<a[0] || x>a[n-1]) return(-1);
@@ -53,15 +53,15 @@ int main()
 {
     int a[N], n = 10, x, p;
     int i;
-    printf("è¯·è¾“å…¥æ•°ç»„\n");
+    printf("ÇëÊäÈëÊı×é\n");
     for (i = 0; i < n; i++)
         scanf("%d", &a[i]);
     Sort(a, n);
-    printf("è¯·è¾“å…¥x\n");
+    printf("ÇëÊäÈëx\n");
     for (i = 0; i < n; i++)
         printf("%d", a[i]);
     scanf("%d", &x);
-    /* å¯»æ‰¾xä½ç½®p*/
+    /* Ñ°ÕÒxÎ»ÖÃp*/
     p = FindPos(a, n, x);
     while (p >= 0)
     {

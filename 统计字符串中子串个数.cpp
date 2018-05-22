@@ -5,10 +5,10 @@
  * @Last Modified time: 2018-04-13 18:10:02
  */
 /*
- * 编写程序，统计字符串str中含有子串substr的个数。
- * 要求：
- * (1)字符串从键盘输入；
- * (2)分别用下标法和指针法实现
+ * ��д����ͳ���ַ���str�к����Ӵ�substr�ĸ�����
+ * Ҫ��
+ * (1)�ַ����Ӽ������룻
+ * (2)�ֱ����±귨��ָ�뷨ʵ��
  */
 #include "stdio.h"
 #include"string.h"

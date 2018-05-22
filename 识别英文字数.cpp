@@ -11,24 +11,24 @@ int main()
 {
 	const int M = 233;
 	const int N = 233;
-	char a[M]; /*æ–‡ç« */
-	printf("è¾“å…¥ä¸€æ®µè‹±æ–‡å•è¯:\n");
+	char a[M]; /*ÎÄÕÂ*/
+	printf("ÊäÈëÒ»¶ÎÓ¢ÎÄµ¥´Ê:\n");
 	gets(a);
 	int b;
 	b = count(a);
 	printf("b=%d\n", b);
-	int i, j, k = 0, l = 0;/*iä¸ºè®¡æ•°å™¨,kè¡¨ç¤ºå•è¯ä¸ªæ•°*/
-	char c[M][N];/*è¡¨ç¤ºæ¯ä¸ªå•è¯*/
+	int i, j, k = 0, l = 0;/*iÎª¼ÆÊıÆ÷,k±íÊ¾µ¥´Ê¸öÊı*/
+	char c[M][N];/*±íÊ¾Ã¿¸öµ¥´Ê*/
 	for (i = 0; i < b - 1; i++)
 	{
 		if (a[i] != ' '&&a[i+1] == ' ')
 			k++;
 	}
 	k += 1;
-	printf("å…±%dä¸ªå•è¯\n", k);
+	printf("??%d¸öµ¥´Ê\n", k);
 	int d[M][1];
 	for (i = 0; i < k; i++)
-		d[i][0] = 0;/*åˆå§‹åŒ–*/
+		d[i][0] = 0;/*³õÊ¼??*/
 	for (i = 0; i < k; i++)
 		for (j = 0; j < N; j++)
 		{
@@ -46,16 +46,16 @@ int main()
 			}
 		}
     int y;
-    int temp[1][M];
+    char temp[1][M];
     for(i=0;i<k-1;i++)
         for(j=i+1;j<k;j++)
         {
             y=strcmp(c[i],c[j]);
             if(y>0)
             {
-				strcpy(temp[1], c[i]);
+				strcpy(temp[0], c[i]);
 				strcpy(c[i], c[j]);
-				strcpy(c[j], temp[1]);
+				strcpy(c[j], temp[0]);
 			}
         }
 
@@ -64,7 +64,7 @@ int main()
 		for(int x=0;x<k;x++)
             ;*/
 
-	for (i = 0; i < k; i++)/*è¾“å‡ºå•è¯*/
+	for (i = 0; i < k; i++)/*Êä³öµ¥´Ê*/
 	{
 		for (j = 0; j < d[i][0]; j++)
 			printf("%c", c[i][j]);

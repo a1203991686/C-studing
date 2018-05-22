@@ -7,7 +7,7 @@ int main()
     int **p, *data;
     int i, n;
     srand(time(NULL));
-    printf("è¾“å…¥æ•°ç»„å…ƒç´ ä¸ªæ•°:");
+    printf("ÊäÈëÊı×éÔªËØ¸öÊı:");
     scanf("%d", &n);
     data = (int *)malloc(n * sizeof(int));
     p = (int **)malloc(n * sizeof(int *));
@@ -21,7 +21,7 @@ int main()
 void sort(int **p,int n)
 {
     int i, j, *temp;
-    printf("åŸæ•°ç»„ä¸º:\n");
+    printf("Ô­Êı×éÎª:\n");
     for (i = 0; i < n; i++)
         printf("%-4d", **(p + i));
     printf("\n");
@@ -33,7 +33,7 @@ void sort(int **p,int n)
                 *(p + i) = *(p + j);
                 *(p + j) = temp;
             }
-    printf("æ’åºåçš„æ•°ç»„ä¸º:\n");
+    printf("ÅÅĞòºóµÄÊı×éÎª:\n");
     for (i = 0; i < n; i++)
         printf("%-4d", **(p + i));
     printf("\n");

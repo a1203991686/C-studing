@@ -1,7 +1,7 @@
 /*
- * è¯·ç¼–ç¨‹è¯»å…¥ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œåˆ¤æ–­å…¶æ˜¯å¦ä¸ºâ€œå›žæ–‡â€ï¼ˆæ­£è¯»å’Œåè¯»éƒ½æ˜¯ä¸€æ ·çš„ï¼‰ã€‚
- * ä¾‹å¦‚ï¼Œè¯»å…¥ï¼š MADAMIMADAMï¼Œè¾“å‡ºï¼šYESï¼›
- * è¯»å…¥ï¼š ABCDBAï¼Œè¾“å‡ºï¼šNOã€‚
+ * Çë±à³Ì¶ÁÈëÒ»¸ö×Ö·û´®£¬ÅÐ¶ÏÆäÊÇ·ñÎª¡°»ØÎÄ¡±£¨Õý¶ÁºÍ·´¶Á¶¼ÊÇÒ»ÑùµÄ£©¡£
+ * ÀýÈç£¬¶ÁÈë£º MADAMIMADAM£¬Êä³ö£ºYES£»
+ * ¶ÁÈë£º ABCDBA£¬Êä³ö£ºNO¡£
  */
 #include"stdio.h"
 #include"string.h"
